@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f8fa">
+  <meta name="description" content="Espetinhos na brasa, porções e bebidas. Monte seu pedido no Brasa — Espetaria & Bar.">
+  <meta property="og:title" content="Brasa — Espetaria & Bar">
+  <meta property="og:description" content="Espetinhos na brasa, porções e bebidas. Monte seu pedido no Brasa — Espetaria & Bar.">
+  <title>Brasa — Espetaria & Bar</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23ff632c'/%3E%3Ctext x='22' y='49' font-family='Georgia' font-weight='bold' font-size='55' fill='white'%3Ef%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="#cardapio" aria-label="Brasa, início">brasa<span>.</span></a>
+      <div class="header-actions">
+        <button class="icon-button desktop-info" data-action="info" aria-label="Informações" data-icon="info"></button>
+        <button class="icon-button cart-toggle" data-action="cart" aria-label="Abrir sacola">
+          <span data-icon="bag"></span>
+          <span class="cart-badge" hidden>0</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <!-- 1. CATALOG VIEW -->
+      <section id="catalog-view" class="view">
+        <section id="client-banner" class="client-banner" aria-labelledby="client-banner-title" hidden></section>
+        <div id="store-quick-info" class="store-quick-info" aria-label="Atendimento"></div>
+        <section id="featured-products" class="featured-products" aria-labelledby="featured-title" hidden></section>
+        <!-- 2. CATEGORIAS, BUSCA E CARDÁPIO COMPLETO -->
+        <div class="menu-surface">
+          <div class="catalog-toolbar">
+            <label class="search-field">
+              <span data-icon="search"></span>
+              <input id="search" type="search" placeholder="Qual vai ser o pedido de hoje?" autocomplete="off" aria-label="Buscar no cardápio">
+              <kbd class="desktop-only">/</kbd>
+            </label>
+            <div class="categories" role="group" aria-label="Filtrar por categoria">
+              <button class="category active" data-category="all" aria-pressed="true"><span data-icon="grid"></span><strong>Cardápio</strong></button>
+              <button class="category" data-category="skewer" aria-pressed="false"><span data-icon="pizza"></span><strong>Espetinhos</strong></button>
+              <button class="category" data-category="classics" aria-pressed="false"><span data-icon="pizza"></span><strong>Tradicionais</strong></button>
+              <button class="category" data-category="cheese" aria-pressed="false"><span data-icon="cheese"></span><strong>Especiais</strong></button>
+              <button class="category" data-category="chicken" aria-pressed="false"><span data-icon="chicken"></span><strong>Frango &amp; Cia</strong></button>
+              <button class="category" data-category="veggie" aria-pressed="false"><span data-icon="leaf"></span><strong>Sem carne</strong></button>
+              <button class="category" data-category="sweet" aria-pressed="false"><span data-icon="sparkles"></span><strong>Na brasa doce</strong></button>
+              <button class="category acai-category" data-category="portion" aria-pressed="false"><span data-icon="bowl"></span><strong>Porções</strong></button>
+              <button class="category" data-category="combo" aria-pressed="false"><span data-icon="bag"></span><strong>Combos</strong></button><button class="category" data-category="beer" aria-pressed="false"><span data-icon="drink"></span><strong>Bar · 18+</strong></button><button class="category drink-category" data-category="drink" aria-pressed="false"><span data-icon="drink"></span><strong>Bebidas</strong></button>
+            </div>
+          </div>
+
+          <button class="builder-banner" data-product="combo-brasa"><span class="builder-thumb pizza-art" style="background-image:url(assets/espetos.jpg)" role="img" aria-label="Espetinhos na brasa"></span><span><strong>A resenha começa na brasa.</strong><small>Conheça o combo com 3 espetos e acompanhamentos</small></span><span class="banner-arrow" data-icon="arrow"></span></button>
+
+          <div class="section-heading">
+            <h2 id="catalog-title">Cardápio completo</h2>
+            <span id="results-count">15 opções</span>
+          </div>
+
+          <div id="product-grid" class="product-grid"></div>
+
+          <div id="catalog-empty" class="empty-state" hidden>
+            <span data-icon="search"></span>
+            <h2>Nenhum sabor por aqui</h2>
+            <p>Tente outro nome ou escolha outra categoria.</p>
+            <button class="text-button" data-action="reset-search">Ver o cardápio completo</button>
+          </div>
+
+          <section id="store-location" class="store-location" aria-labelledby="location-title"></section>
+          <p class="catalog-note">Brasa acesa. Mesa cheia. Conversa boa.</p>
+        </div>
+      </section>
+
+      <!-- FAVORITES VIEW -->
+      <section id="favorites-view" class="view" hidden>
+        <div class="page-top">
+          <button class="icon-button" data-action="home" aria-label="Voltar" data-icon="back"></button>
+          <h1>Suas favoritas<span>.</span></h1>
+        </div>
+        <p class="muted page-subtitle">Os sabores que ganharam seu coração.</p>
+        <div id="favorites-grid" class="product-grid"></div>
+        <div id="favorites-empty" class="empty-state">
+          <span data-icon="heart"></span>
+          <h2>A primeira favorita te espera</h2>
+          <p>Toque no coração de um produto para salvá-lo aqui.</p>
+          <button class="primary-button" data-action="home">Explorar cardápio</button>
+        </div>
+      </section>
+
+      <!-- 5. SACOLA E REVISÃO DO PEDIDO -->
+      <section id="cart-view" class="view cart-page" hidden>
+        <div class="page-top">
+          <button class="icon-button" data-action="home" aria-label="Voltar ao cardápio" data-icon="back"></button>
+          <h1>Sua sacola<span>.</span></h1>
+          <button class="text-button" data-action="home">Adicionar mais</button>
+        </div>
+        <div id="cart-content"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand" href="#cardapio">brasa<span>.</span></a>
+      <span>Espetinho na brasa. Cerveja gelada.</span>
+      <button class="text-button" data-action="info">Sobre este cardápio</button>
+    </footer>
+  </div>
+
+  <nav class="bottom-nav" aria-label="Navegação principal">
+    <button class="nav-item active" data-action="home" aria-label="Cardápio" aria-current="page"><span data-icon="home"></span><span class="nav-label">Cardápio</span></button>
+    <button class="nav-item" data-action="favorites" aria-label="Favoritas"><span data-icon="heart"></span><span class="nav-label">Favoritas</span></button>
+    <button class="nav-item" data-action="cart" aria-label="Sacola"><span data-icon="bag"></span><span class="nav-label">Sacola</span><span class="nav-count" hidden>0</span></button>
+    <button class="nav-item" data-action="info" aria-label="Informações"><span data-icon="info"></span><span class="nav-label">Informações</span></button>
+  </nav>
+
+  <!-- MODAL: DETALHES DO PRODUTO / PERSONALIZAÇÃO -->
+  <dialog id="product-dialog" class="product-dialog" aria-labelledby="detail-title">
+    <div id="product-detail"></div>
+  </dialog>
+
+  <!-- MODAL: INFORMAÇÕES E AJUDA -->
+  <dialog id="info-dialog" class="small-dialog" aria-labelledby="info-title">
+    <button class="icon-button close-small" data-close="info-dialog" aria-label="Fechar" data-icon="close"></button>
+    <p class="eyebrow">SOBRE O</p>
+    <h2 class="info-brand" id="info-title">brasa<span>.</span></h2>
+    <p>Espetinhos, porções e bebidas para uma boa resenha. Cardápio demonstrativo com valores e fotos ilustrativos.</p>
+    
+    <div class="info-row"><span data-icon="chicken"></span><div><strong>Do seu jeito</strong><small>Escolha seus espetos, inclua acompanhamentos e deixe observações no pedido.</small></div></div>
+    <div class="info-row"><span data-icon="pin"></span><div><strong>Entrega ou retirada</strong><small>Receba no conforto de casa ou retire no balcão da espetaria.</small></div></div>
+    <div class="info-row"><span data-icon="bag"></span><div><strong>Pedido direto no WhatsApp</strong><small>Você envia a mensagem pronta e a espetaria confirma o tempo estimado e preparo.</small></div></div>
+    <div class="info-row"><span data-icon="heart"></span><div><strong>Favoritas salvas</strong><small>Seus sabores preferidos guardados para pedir com 1 clique.</small></div></div>
+
+    <div class="store-info-box" id="store-hours-info">
+      <strong>Horários de funcionamento</strong>
+      <p>Terça a Quinta: 18h às 23h<br>Sexta a Domingo: 18h às 23h59<br>Segunda-feira: Fechado</p>
+    </div>
+
+    <button class="primary-button full-width" data-close="info-dialog">Ver cardápio</button>
+  </dialog>
+
+  <!-- MODAL: CÓPIA RÁPIDA / REVISÃO -->
+  <dialog id="checkout-dialog" class="small-dialog" aria-labelledby="checkout-title">
+    <button class="icon-button close-small" data-close="checkout-dialog" aria-label="Fechar" data-icon="close"></button>
+    <p class="eyebrow">RESUMO DO PEDIDO</p>
+    <h2 id="checkout-title">Mensagem do pedido<span>.</span></h2>
+    <p class="order-copy-instruction">Copie ou confira a mensagem organizada para enviar à espetaria:</p>
+    <pre id="order-summary"></pre>
+    <button class="primary-button full-width" data-action="copy-order"><span data-icon="copy"></span>Copiar pedido</button>
+    <button class="text-button full-width" data-close="checkout-dialog">Voltar</button>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
+

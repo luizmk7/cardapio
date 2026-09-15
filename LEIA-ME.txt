@@ -1,0 +1,26 @@
+BRASA — ESPETARIA & BAR
+Versão de demonstração adaptada do cardápio enviado.
+
+Conteúdo: espetos, porções, combo e bebidas; busca; favoritos; sacola; adicionais; checkout de entrega/retirada; pagamento e mensagem para WhatsApp. Sem roleta.
+
+Personalizar config.js: nome, endereço, horários, cidade e whatsappNumber (apenas dígitos com código do país e DDD).
+Personalizar menu.js: itens, preços em centavos e fotografias.
+Preços, endereço e horários são exemplos. As fotografias são ilustrativas e devem ser substituídas pelas fotos da loja antes de uso comercial.
+
+Para visualizar localmente: execute python -m http.server 8000 nesta pasta e abra http://localhost:8000. O site usa módulos JavaScript e deve ser servido via HTTP.
+Para hospedar: publique todos os arquivos desta pasta em uma hospedagem estática, com index.html na raiz.
+O WhatsApp está intencionalmente vazio. Copiar pedido funciona; o envio só é habilitado após cadastrar o número.
+Nenhum pagamento é processado online; o pedido precisa da confirmação da loja.
+
+BANNER DO CLIENTE
+No config.js, edite storeConfig.banner para trocar foto, logo opcional, título, frase e texto do botão. O nome da loja vem de storeConfig.name.
+Coloque as imagens na pasta assets e indique o caminho (exemplo: assets/fachada.jpg). Para o fundo, prefira foto horizontal de 1600 x 700 pixels, com o assunto à direita. Use imagePosition para ajustar o enquadramento.
+Para ocultar o banner, altere enabled para false. O botão leva à busca e ao cardápio.
+
+ATENDIMENTO E LOCALIZAÇÃO
+Configure openingHours com weekdays (0 domingo a 6 sábado) e hours no formato HH:MM às HH:MM. O status usa o fuso timezone e atualiza a cada minuto. Horários atuais são demonstrativos.
+Prazos vêm de estimates; deliveryEnabled e pickupEnabled controlam as modalidades exibidas.
+Edite address e locationUrl (link HTTPS do mapa) para habilitar Como chegar no final do cardápio. Não há endereço real cadastrado nesta demonstração.
+
+DESTAQUES
+Em config.js, featured.productIds define até 6 produtos do menu.js e sua ordem. As fotos e nomes vêm do próprio cardápio. Use featured.enabled: false para ocultar a seção.

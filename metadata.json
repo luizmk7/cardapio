@@ -1,0 +1,8 @@
+{
+  "name": "Brasa — Espetaria & Bar",
+  "description": "Cardápio digital de espetinhos na brasa, porções e bebidas com montagem de pedido e envio para WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
